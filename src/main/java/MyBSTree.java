@@ -1,4 +1,8 @@
 import java.util.ArrayList;
+/**
+ * Represents a Binary Search Tree (BST) storing Person records.
+ * Supports insert, search, delete, traversal and balancing operations.
+ */
 public class MyBSTree {
     public Node root;
 
@@ -60,6 +64,12 @@ public class MyBSTree {
         inOrder(p.right);
     }
 
+    /**
+     * Performs a Breadth-First Traversal (BFT) on the tree.
+     * This method uses a queue to traverse the tree level by level,
+     * starting from the root node, and prints the information of each node.
+     * If the tree is empty, the method returns immediately.
+     */
     public void bft() {
         if (isEmpty()) {
             return;
@@ -78,6 +88,12 @@ public class MyBSTree {
         }
     }
 
+    /**
+     * Recursively searches for a node with the specified ID in the binary search tree.
+     * * @param p  The starting node (usually the root) for the search.
+     * @param id The target ID to search for.
+     * @return The node containing the specified ID, or null if the node is not found.
+     */
     public Node search(Node p, String id) {
         if (p == null) {
             return null;
@@ -91,6 +107,15 @@ public class MyBSTree {
         return search(p.right, id);
     }
 
+    /**
+     * Deletes a node from the BST by the given ID.
+     * Handles three cases:
+     * - Node has no children: simply remove it.
+     * - Node has one child: replace it with its child.
+     * - Node has two children: replace with in-order successor.
+     *
+     * @param id The ID of the Person to be deleted.
+     */
     public void delete(String id) {
         Node f = null, p = root;
         while (p != null && !p.info.ID.equals(id)) {
@@ -128,6 +153,11 @@ public class MyBSTree {
         System.out.println("Deleted successfully.");
     }
 
+    /**
+     * Balances the BST by collecting all nodes via in-order traversal
+     * into a sorted list, then rebuilding the tree from the middle element
+     * of each subarray to ensure balance.
+     */
     public void balance() {
         ArrayList<Person> list = new ArrayList<>();
         storeInOrder(root, list);
@@ -138,6 +168,12 @@ public class MyBSTree {
 
     }
 
+    /**
+     * Stores all nodes in sorted order into a list using in-order traversal.
+     *
+     * @param p    The current node.
+     * @param list The list to store Person objects.
+     */
     private void storeInOrder(Node p, ArrayList<Person> list) {
         if (p == null) {
             return;
@@ -147,6 +183,14 @@ public class MyBSTree {
         storeInOrder(p.right, list);
     }
 
+    /**
+     * Recursively builds a balanced BST from a sorted list.
+     *
+     * @param list  The sorted list of Person objects.
+     * @param start The start index.
+     * @param end   The end index.
+     * @param tree  The tree to insert into.
+     */
     private void buildBalancedTree(ArrayList<Person> list, int start, int end, MyBSTree tree) {
         if (start > end) {
             return;
@@ -155,6 +199,32 @@ public class MyBSTree {
         tree.insert(list.get(mid));
         buildBalancedTree(list, start, mid - 1, tree);
         buildBalancedTree(list, mid + 1, end, tree);
+    }
+
+    /**
+     * Performs a pre-order traversal of the binary search tree.
+     * Visits the current node first, then recursively the left and right subtrees.
+     *
+     * @param p The starting node for the traversal (usually the root).
+     */
+    public void preOrder(Node p) {
+        if (p == null) return;
+        System.out.println(p.info);
+        preOrder(p.left);
+        preOrder(p.right);
+    }
+
+    /**
+     * Performs a post-order traversal of the binary search tree.
+     * Recursively visits the left and right subtrees first, then the current node.
+     *
+     * @param p The starting node for the traversal (usually the root).
+     */
+    public void postOrder(Node p) {
+        if (p == null) return;
+        postOrder(p.left);
+        postOrder(p.right);
+        System.out.println(p.info);
     }
 
 }

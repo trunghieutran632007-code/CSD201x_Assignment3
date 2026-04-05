@@ -1,4 +1,6 @@
 import java.io.File;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Scanner;
 
 public class Graph {
@@ -113,5 +115,34 @@ public class Graph {
         }
         printPath(path, path[j]);
         System.out.print("-> " + cityNames[j] + " ");
+    }
+
+
+    /**
+     * Performs a Breadth-First Search traversal of the graph.
+     * Visits all vertices level by level starting from the given vertex.
+     *
+     * @param start The starting vertex index (0 = city A)
+     */
+    public void BFS(int start) {
+        boolean[] visited = new boolean[n];
+        Queue<Integer> queue = new LinkedList<>();
+
+        visited[start] = true;
+        queue.add(start);
+
+        System.out.print("BFS_Graph: ");
+        while (!queue.isEmpty()) {
+            int v = queue.poll();
+            System.out.print(cityNames[v] + " ");
+
+            for (int i = 0; i < n; i++) {
+                if (a[v][i] != 0 && a[v][i] != INF && !visited[i]) {
+                    visited[i] = true;
+                    queue.add(i);
+                }
+            }
+        }
+        System.out.println();
     }
 }

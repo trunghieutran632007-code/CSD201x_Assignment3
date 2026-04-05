@@ -1,4 +1,8 @@
 import java.util.LinkedList;
+/**
+ * Represents a Queue data structure using a LinkedList.
+ * Used for Breadth-First Traversal of the BST.
+ */
 
 public class MyQueue {
     LinkedList<Node> t;
