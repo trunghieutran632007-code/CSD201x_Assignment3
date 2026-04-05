@@ -55,4 +55,16 @@ public class Person {
         }
         return false;
     }
+
+    /**
+     * Returns a hash code value for this Person based on their ID.
+     * Consistent with the {@link #equals(Object)} method — two Person
+     * objects that are equal will return the same hash code.
+     *
+     * @return The hash code of this Person's ID.
+     */
+    @Override
+    public int hashCode() {
+        return ID.hashCode();
+    }
 }
