@@ -5,11 +5,18 @@ import java.util.ArrayList;
  */
 public class MyBSTree {
     public Node root;
-
+    /**
+     * Initializes an empty Binary Search Tree.
+     * Sets the root of the tree to null.
+     */
     public MyBSTree () {
         root = null;
     }
-
+    /**
+     * Checks whether the Binary Search Tree is empty.
+     *
+     * @return true if the tree has no nodes, false otherwise.
+     */
     public boolean isEmpty() {
         return root == null;
     }

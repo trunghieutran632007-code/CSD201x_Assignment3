@@ -1,6 +1,15 @@
 import java.util.Scanner;
-
+/**
+ * The main class of the application
+ * Provides a command line interface menu to interact with MyBSTree and Graph functionalities
+ */
 public class Main {
+    /**
+     * The entry point of the program
+     * Initializes the data structures and displays the interactive menu
+     *
+     * @param args Command line arguments
+     */
     public static void main(String[] args) {
         MyBSTree tree = new MyBSTree();
         Graph graph = new Graph();

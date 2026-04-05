@@ -1,9 +1,15 @@
+/**
+ * Represents a person entity with details such as ID, name, birthplace, and date of birth.
+ */
 public class Person {
     String ID;
     String name;
     String birthplace;
     String dob;
 
+    /**
+     * Initializes a new Person instance with default values.
+     */
     public Person(){
 
     }
@@ -23,15 +29,22 @@ public class Person {
         this.dob = dob;
     }
 
-
+    /**
+     * Returns a formatted string representation of the Person.
+     *
+     * @return A formatted string containing the ID, name, date of birth, and birthplace.
+     */
     @Override
-
     public String toString() {
-
         return String.format("%-10s %-10s %-20s %-10s", ID, name, dob, birthplace);
-
     }
 
+    /**
+     * Compares this Person to the specified object for equality based on their IDs.
+     *
+     * @param obj The object to compare this Person against.
+     * @return true if the given object is a Person with the same ID, false otherwise.
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -41,6 +54,5 @@ public class Person {
             return ID.equals(person.ID);
         }
         return false;
-
     }
 }
